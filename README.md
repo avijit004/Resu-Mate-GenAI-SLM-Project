@@ -1,6 +1,6 @@
 # Resu-Mate: Career Doc Generator
 
-A professional **Streamlit + Ollama + LangChain** application that generates tailored **Cold Emails** and **Cover Letters** from your resume and job descriptions using a hybrid **NLP + LLM** approach.
+A professional **Streamlit + Ollama + LangChain** application that generates tailored **Cold Emails** and **Cover Letters** from your resume and job descriptions using a hybrid **NLP + SLM** approach.
 
 ## 🚀 Features
 
@@ -17,16 +17,16 @@ A professional **Streamlit + Ollama + LangChain** application that generates tai
 - Uses **TF-IDF vectorization** to find keyword matches
 - Optional **Ollama embeddings** (`nomic-embed-text`) for semantic similarity
 - **Cosine similarity** scoring to rank resume sections
-- Pre-filters most relevant sections before LLM processing
+- Pre-filters most relevant sections before SLM processing
 
 #### 2. **Hybrid Approach**
 - **Step 1**: Semantic matching identifies top K resume sections (configurable)
-- **Step 2**: LLM refines and extracts alignment points from filtered sections
+- **Step 2**: SLM refines and extracts alignment points from filtered sections
 - **Result**: More accurate, focused matching with explainable similarity scores
 
 #### 3. **Technical Stack**
 - **Traditional NLP**: TF-IDF vectorization, cosine similarity
-- **Modern LLM**: Ollama (llama3.2:3b, phi3:mini) via LangChain
+- **Modern SLM**: Ollama (llama3.2:3b, phi3:mini) via LangChain
 - **Embeddings**: Optional Ollama embeddings for semantic search
 
 ## 📋 Requirements
@@ -37,8 +37,8 @@ pip install -r requirements.txt
 
 ### Key Dependencies
 - `streamlit` - Web UI
-- `langchain-core`, `langchain-ollama` - LLM framework
-- `ollama` - Local LLM server client
+- `langchain-core`, `langchain-ollama` - SLM framework
+- `ollama` - Local SLM server client
 - `numpy`, `scikit-learn` - NLP & ML (TF-IDF, cosine similarity)
 - `pypdf`, `python-docx` - Document parsing
 - `reportlab` - PDF generation
@@ -68,7 +68,7 @@ ui.py                   # Streamlit UI & user interactions
 config.py               # Configuration (models, settings)
 doc_processing.py       # PDF/DOCX text extraction
 semantic_matching.py    # TF-IDF, embeddings, cosine similarity
-llm_service.py          # LLM generation (hybrid: semantic + LLM)
+llm_service.py          # SLM generation (hybrid: semantic + SLM)
 pdf_export.py           # PDF generation
 ```
 
@@ -80,8 +80,8 @@ pdf_export.py           # PDF generation
    - Compute TF-IDF vectors or embeddings
    - Rank by cosine similarity with job description
    - Filter top K sections above threshold
-4. **LLM Alignment Extraction**:
-   - Send filtered sections + job description to LLM
+4. **SLM Alignment Extraction**:
+   - Send filtered sections + job description to SLM
    - Extract 5-10 key matching points
 5. **Document Generation**:
    - Generate Cold Email and Cover Letter
@@ -120,7 +120,7 @@ DEFAULT_EMBEDDING_MODEL = "nomic-embed-text"
 - **Implementation**: `sklearn.metrics.pairwise.cosine_similarity`
 - **Range**: 0 (no similarity) to 1 (identical)
 
-### 4. LLM Refinement
+### 4. SLM Refinement
 - **Purpose**: Extract human-readable alignment points
 - **Model**: llama3.2:3b (default) or phi3:mini
 - **Approach**: Prompt engineering with filtered resume sections
@@ -130,18 +130,18 @@ DEFAULT_EMBEDDING_MODEL = "nomic-embed-text"
 - **Job Seekers**: Quickly tailor applications to multiple positions
 - **Career Coaches**: Demonstrate resume-JD alignment
 - **Recruiters**: Analyze candidate fit (reverse use case)
-- **Students**: Learn NLP + LLM hybrid approaches
+- **Students**: Learn NLP + SLM hybrid approaches
 
 ## 🔬 Technical Highlights
 
 ### Why Hybrid Approach?
 - **Semantic matching** (TF-IDF/embeddings) is fast and explainable
-- **LLM refinement** adds context understanding and natural language
+- **SLM refinement** adds context understanding and natural language
 - **Combined**: More accurate than either alone
 
 ### Performance
 - **Semantic matching**: ~1-2 seconds (TF-IDF) or ~3-5 seconds (embeddings)
-- **LLM generation**: ~10-30 seconds per document (depends on model)
+- **SLM generation**: ~10-30 seconds per document (depends on model)
 - **Total**: ~20-60 seconds for full pipeline
 
 ## 📝 License

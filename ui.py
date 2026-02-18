@@ -65,7 +65,7 @@ def run_app() -> None:
         use_semantic = st.checkbox(
             "🔬 Enable semantic matching",
             value=USE_SEMANTIC_MATCHING,
-            help="Use TF-IDF/embeddings + cosine similarity to pre-filter resume sections before LLM processing.",
+            help="Use TF-IDF/embeddings + cosine similarity to pre-filter resume sections before SLM processing.",
         )
         st.session_state["use_semantic_matching"] = use_semantic
         
@@ -159,7 +159,7 @@ def run_app() -> None:
             if uploaded_file and target_job and target_job.strip():
                 resume_content = extract_text(uploaded_file)
                 try:
-                    with st.spinner("🔍 Finding key matching skills & achievements (using semantic matching + LLM)…"):
+                    with st.spinner("🔍 Finding key matching skills & achievements (using semantic matching + SLM)…"):
                         try:
                             alignment_points, semantic_info = extract_alignment_points(
                                 resume_content,
@@ -231,7 +231,7 @@ def run_app() -> None:
 
         if "email_draft" in st.session_state:
             if st.session_state.get("alignment_points"):
-                with st.expander("🎯 Key matching skills & achievements (LLM-extracted)", expanded=False):
+                with st.expander("🎯 Key matching skills & achievements (SLM-extracted)", expanded=False):
                     st.markdown(st.session_state.alignment_points)
             
             if st.session_state.get("semantic_matches") and USE_SEMANTIC_MATCHING:

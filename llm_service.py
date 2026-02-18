@@ -1,6 +1,8 @@
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import PromptTemplate
 
+from typing import Tuple
+
 from config import DEFAULT_EMBEDDING_MODEL, SIMILARITY_THRESHOLD, TOP_K_SECTIONS, USE_SEMANTIC_MATCHING
 from semantic_matching import format_semantic_matches, get_top_matching_sections
 
@@ -18,7 +20,7 @@ def extract_alignment_points(
     embedding_model: str = DEFAULT_EMBEDDING_MODEL,
 ) -> Tuple[str, str]:
     """
-    Extract alignment points using hybrid approach: semantic matching + LLM refinement.
+    Extract alignment points using hybrid approach: semantic matching + SLM refinement.
     
     Returns:
         Tuple of (formatted_alignment_points, semantic_matches_info)
@@ -54,7 +56,7 @@ def extract_alignment_points(
     else:
         focused_resume = resume_text
     
-    # Step 2: LLM-based extraction (refines semantic matches)
+    # Step 2: SLM-based extraction (refines semantic matches)
     template = """
     You are an expert career coach and professional writer.
 

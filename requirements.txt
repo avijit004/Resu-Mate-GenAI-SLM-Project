@@ -1,7 +1,7 @@
 # Web Interface
 streamlit
 
-# LLM Framework & Ollama Integration
+# SLM Framework & Ollama Integration
 langchain-core
 langchain-ollama
 ollama

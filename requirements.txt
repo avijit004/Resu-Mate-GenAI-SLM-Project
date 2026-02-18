@@ -1,0 +1,21 @@
+# Web Interface
+streamlit
+
+# LLM Framework & Ollama Integration
+langchain-core
+langchain-ollama
+ollama
+
+# Document Parsing
+pypdf
+python-docx
+
+# PDF Generation
+reportlab
+
+# NLP & Machine Learning
+numpy
+scikit-learn
+
+# Environment & Utilities
+requests
